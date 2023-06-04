@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Cards from "./components/Cards/Cards";
+import getCards from "./shared/api.js";
+import { useEffect, useState } from "react";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [cards, setCards] = useState([]);
+
+    const fetch = async () => {
+        try {
+            const { data } = await getCards();
+            setCards(data);
+        } catch (error) {}
+    };
+
+    useEffect(() => {
+        fetch();
+    }, []);
+
+    const itemsPerPage = 3;
+    return <Cards items={cards} itemsPerPage={itemsPerPage} />;
 }
 
 export default App;
