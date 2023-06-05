@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import numeral from "numeral";
 import scss from "./TweetsCard.module.scss";
-import logo from "../../../img/logo.png";
-import message from "../../../img/message.png";
-import LoadMore from "../../../shared/Button/Button";
+import logo from "../../img/logo.png";
+import message from "../../img/message.png";
+import LoadMore from "../../shared/Button/Button";
 
 const TweetsCard = ({ item }) => {
   const [isFollowing, setIsFollowing] = useState(false);

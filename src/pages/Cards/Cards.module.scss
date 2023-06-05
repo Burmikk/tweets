@@ -1,14 +1,12 @@
 .tweets {
-  padding: 30px;
+  padding: 15px;
 }
 .container {
   justify-content: center;
   width: 1200px;
-  height: 100vh;
   margin: 0 auto;
   display: flex;
-  align-items: flex-start;
-  align-content: baseline;
+
   flex-direction: row;
   flex-wrap: wrap;
   gap: 15px;

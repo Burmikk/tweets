@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import LoadMore from "../../shared/Button/Button";
-import TweetsCard from "./TweetsCard/TweetsCard";
+import TweetsCard from "../../components/TweetsCard/TweetsCard";
 import getCards from "../../shared/api.js";
 import scss from "./Cards.module.scss";
 import { useNavigate } from "react-router-dom";
@@ -8,7 +8,6 @@ import { useNavigate } from "react-router-dom";
 const Cards = () => {
   const itemsPerPage = 3;
   const [cards, setCards] = useState([]);
-  console.log("cards--->", cards);
   const [visibleItems, setVisibleItems] = useState(itemsPerPage);
   const buttonClasses = `${scss.btn} ${scss.activeBtn}`;
   const navigate = useNavigate();
