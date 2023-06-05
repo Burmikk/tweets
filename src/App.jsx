@@ -1,12 +1,18 @@
 import "./App.css";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Cards from "./components/Cards/Cards";
-// import getCards from "./shared/api.js";
-// import { useEffect, useState } from "react";
-
+import Home from "./pages/Home/Home";
+import PageNotFound from "./pages/PageNotFound/PageNotFound";
 function App() {
   return (
     <>
-      <Cards />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/tweets" element={<Cards />}></Route>
+          <Route path="*" element={<PageNotFound />}></Route>
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }

@@ -58,7 +58,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  background: #5736a3;
+  background-color: #5736a3;
   margin-left: 8px;
   margin-top: 8px;
 }
@@ -107,7 +107,7 @@
   cursor: pointer;
   &:focus,
   &:hover {
-    box-shadow: 0 0 1rem #5cd3a8;
+    box-shadow: 0 0 20px #5cd3a8;
   }
 }
 
