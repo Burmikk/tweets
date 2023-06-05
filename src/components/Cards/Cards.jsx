@@ -1,20 +1,35 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import LoadMore from "../LoadMore/LoadMore";
 import TweetsCard from "./TweetsCard/TweetsCard";
+import getCards from "../../shared/api.js";
 
-const Cards = ({ items, itemsPerPage }) => {
+const Cards = () => {
+    const itemsPerPage = 3;
+    const [cards, setCards] = useState([]);
     const [visibleItems, setVisibleItems] = useState(itemsPerPage);
+
+    const fetchData = async () => {
+        try {
+            const { data } = await getCards();
+            setCards(data);
+        } catch (error) {}
+    };
+
+    useEffect(() => {
+        fetchData();
+    }, []);
 
     const handleLoadMore = () => {
         setVisibleItems((prevState) => prevState + itemsPerPage);
     };
 
-    const showItems = items.slice(0, visibleItems).map((item) => <TweetsCard key={item.id} item={item} />);
+    const showItems = cards.slice(0, visibleItems).map((item) => <TweetsCard key={item.id} item={item} />);
+    // const showItems = cards.map((item) => <TweetsCard key={item.id} item={item} />);
 
     return (
         <div>
             {showItems}
-            {items.length > visibleItems && <LoadMore loadMore={handleLoadMore} />}
+            {cards.length > visibleItems && <LoadMore loadMore={handleLoadMore} />}
         </div>
     );
 };
